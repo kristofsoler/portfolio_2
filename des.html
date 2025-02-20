@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!--
+	
+-->
+<html>
+	<head>
+		<title>VAE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Portfolio</strong> <span>Kristofer Soler</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button primary fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Optimizing Manufacturing Efficiency Through Discrete Event Simulation: Addressing Queue Management and Machine Bottlenecks
+								</h1>
+							</header>
+							<div class="content">
+								<p><br />
+								</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>Overview</h2>
+									</header>
+									<p> This project developed a Discrete Event Simulation (DES)
+										 to model and optimize the lamp manufacturing process, 
+										 focusing on the performance of two sequential machines.
+										  Implemented in Julia, the simulation tracked the flow of orders (lamps)
+										   using random number generators (RNGs) for realistic stochastic processing
+										    and event-driven mechanisms to handle arrivals, queues, and machine operations.
+											 Adjustable parameters, including interarrival times, machine service times, 
+											 and queue capacities, were analyzed to evaluate and improve system efficiency.</p>
+
+
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_event_sim/event_grafr.jpg" alt="" data-position="center center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Key Questions Addressed
+
+												</h3>
+											</header>
+											<p>Queue Capacity: Doubling the capacity of Queue 2 reduced Queue 1 congestion
+												 but did not significantly improve overall system performance,
+												  indicating that the original queue capacity was sufficient.
+												   Machine Speeds: While doubling the speed of Machine 1 had no impact, 
+												   increasing Machine 2’s speed substantially reduced processing times and 
+												   cleared bottlenecks, identifying Machine 2 as a critical constraint
+												    in the system. Increased Arrival Rates: A higher arrival rate initially 
+													overwhelmed the system, leading to excessive queue buildup. However, 
+													increasing Machine 2’s speed resolved the bottleneck, enabling the system 
+													to efficiently handle the higher demand.</p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_event_sim/Picture 1.jpg" alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Key Model Components</h3>
+											</header>
+											<p> The results highlighted that improving Machine 2's speed
+												 significantly benefits system performance, particularly 
+												 under conditions of increased demand, while Queue 2’s capacity
+												  had minimal effect. These findings provide actionable insights for 
+												  enhancing throughput and reducing manufacturing time
+												   in the production process.
+												</p>
+											
+										</div>
+									</div>
+								</section>
+
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_event_sim/Picture 2.jpg" alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3></h3>
+											</header>
+											<p> The steady-state average queue length (black line), 
+												showing a simulation run of the system with the optimal paramaters. 
+												It shows the system is operating under stable conditions. 
+												Since the queue length remains relatively constant, 
+												it suggests that the queue is not growing indefinitely, 
+												implying a balance between arrival and service rates.
+												</p>
+											
+										</div>
+									</div>
+								</section>
+								
+
+					</div>
+
+				
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/kristofsoler/event_simulation" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

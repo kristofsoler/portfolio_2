@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<!--
+	
+-->
+<html>
+	<head>
+		<title>ecg</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Portfolio</strong> <span>Kristofer Soler</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">Landing</a></li>
+							<li><a href="generic.html">Generic</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button primary fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Deep Learning for ECG Classification
+								</h1>
+							</header>
+							<div class="content">
+								<p><br />
+								</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>Project Overview</h2>
+									</header>
+									<p>This project focuses on building a Convolutional Neural Network (CNN)
+										 to classify electrocardiogram (ECG) signals into two 
+										 categories: Sinus Rhythm and Atrial Fibrillation. 
+										 The model is trained, validated, and tested a noisy ECG data,
+										 The project successfully developed a robust Convolutional Neural Network (CNN)
+										  for classifying ECG signals into Sinus Rhythm and Atrial Fibrillation. 
+										  With optimized preprocessing, hyperparameter tuning, and an
+										   effective architecture, the model achieved
+										    a high test accuracy of 96.1% and demonstrated strong generalization
+										</p>The dataset utilized in this case study 
+										PTB-XL Atrial Fibrillation Detection Dataset (2000), 
+										is a comprehensive collection of electrocardiogram (ECG) 
+										data designed for time-series analysis. The dataset comprises two 
+										components: an information dataframe and a 3D array of ECG signals.
+
+										The ECG data includes approximately 6,428 unique ECG strips, 
+										representing distinct patients. Each strip is sampled at 150 Hz over a duration
+										 of 10 seconds, resulting in around 5,000 integer samples per patient. 
+										 Altogether, this equates to a dataset of over 32 
+										 million rows of time-series data. The information dataframe provides 
+										 metadata and classification labels for each ECG strip, 
+										 categorizing the signals into normal rhythm, atrial fibrillation, 
+										 and other arrhythmias
+										 </p>
+										</p>
+
+
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images ecg/af.jpg" alt="" data-position="center center" />
+										<img src="images ecg/sinus.jpg" alt="" data-position="center center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Data Cleaning</h3>
+											</header>
+											<p>To prepare the dataset for analysis, a series of preprocessing steps
+												were performed to optimize its structure and reduce its dimensionality
+												 while preserving relevant information for atrial fibrillation detection. 
+												 Unnecessary columns were removed from the information dataframe, retaining only 
+												 those related to rhythm labels and ECG signal quality. The ECG signal data, initially a
+												  3D array containing the number of ECG recordings, total samples per recording, and 12 
+												  standard ECG leads, was reshaped into a 2D array. This restructuring enabled
+												   compatibility with algorithms requiring 2D inputs. <p> 
+												   <p> Given the dataset's substantial size (32,140,000 rows),
+														data reduction techniques were applied. The number of samples per
+														 ECG was reduced from 5,000 to 2,000, focusing on the rhythm rather than axis 
+														 orientation, which is less critical for atrial fibrillation diagnosis.
+														  Additionally, the number of leads analyzed was reduced from 12 to 4, 
+														  further optimizing the dataset. The reshaped ECG data was then merged
+														   with the information dataframe, resulting in a consolidated dataset with
+															columns for rhythm labels, case IDs, and ECG quality indicators. <p> 
+												   <p> Further dimensionality reduction involved filtering out noise and 
+													   irrelevant cases. Columns indicating noise types (e.g., baseline 
+													   drift, electrode issues, or artefacts) were examined, and cases
+														with pacemakers were excluded. Pacemakers replace irregular
+														 atrial fibrillation rhythms with regular paced rhythms, which
+														  could confound the learning process.
+
+											   </p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images ecg/learning_curves.jpg" alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Key Model Components</h3>
+											</header>
+											<p>
+											The Convolutional Neural Network (CNN) was designed using the Keras 
+											Sequential API to classify ECG signals into two categories: Sinus Rhythm 
+											and Atrial Fibrillation. The architecture includes multiple convolutional 
+											layers with filters of increasing size (32, 64, 128), kernel size of 5, and 
+											ReLU activation to extract meaningful features from the time-series ECG data.
+											 Each convolutional layer is followed by Batch Normalization and MaxPooling 
+											 layers (pool size: 1x8) to stabilize learning and reduce dimensionality.
+											The Flatten layer prepares the features for a dense output layer with a
+											 softmax activation to output probabilities for the two classes. The model
+											  employs the Nadam optimizer with an initial learning rate and an exponential 
+											  decay schedule to fine-tune the learning process over epochs. A categorical
+											   crossentropy loss function is used for classification. To enhance training 
+											   efficiency and prevent overfitting, the model includes Early Stopping
+											    (monitoring validation accuracy) and a Learning Rate Scheduler to
+												 adapt the learning rate dynamically.
+												<p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images ecg/confm.jpg" alt="" data-position="25% 25%" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Hyperparamater tuning
+												</h3>
+											</header>
+											<p>Hyperparameter tuning focused on optimizing the CNN architecture for
+												 classifying ECG signals. The process involved adjusting key parameters, 
+												 including the number of filters per convolutional layer (32, 64, 128), 
+												 initial learning rate (0.10), and learning rate decay factor (tested at 3).
+												  The Nadam optimizer and categorical crossentropy loss function were used to
+												   ensure efficient training for the multi-class classification task. 
+												   The tuning process iterated through decay rates, training the model 
+												   with early stopping and a learning rate scheduler to balance convergence
+												    speed and stability. Performance metrics, including maximum training and
+													 validation accuracies, were recorded for each configuration. The best
+													  model demonstrated robust accuracy, reflecting effective hyperparameter
+													   selection for detecting atrial fibrillation. </p>
+
+													</p>
+													<a href="generic.html" class="image">
+														<img src="images ecg/Screenshot 2024-12-01 at 21.46.04.jpg" alt="" data-position="25% 25%" />
+													</a>
+
+													The Convolutional Neural Network (CNN) achieved excellent performance in classifying ECG signals into Sinus Rhythm and Atrial Fibrillation. On the unseen test dataset, the model demonstrated a test accuracy of 96.1% with a test loss of 0.1299, indicating solid predictive capabilities. The classification report highlighted high precision, recall, and F1-scores for both classes, with:
+
+
+														Sinus Rhythm: Precision = 98%, Recall = 94%, F1-score = 96%
+													Atrial Fibrillation: Precision = 95%, Recall = 98%, F1-score = 96%
+													</p>
+											
+										</div>
+									</div>
+								</section>
+							</section>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+									
+								</div>
+							</section>
+
+					</div>
+
+				
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/kristofsoler/ecg_classification" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
