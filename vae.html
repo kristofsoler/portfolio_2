@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<!--
+	
+-->
+<html>
+	<head>
+		<title>VAE</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Portfolio</strong> <span>Kristofer Soler</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button primary fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Echocardiography Anomaly Detection Using ConvLSTM Beta Variational Autoencoder (VAE)
+								</h1>
+							</header>
+							<div class="content">
+								<p><br />
+								</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>Overview</h2>
+									</header>
+									<p>This project focuses on detecting anomalies in echocardiography videos using a 
+										Convolutional LSTM Variational Autoencoder (ConvLSTM VAE).
+										 The proposed ConvLSTM VAE architecture combines the strengths of 
+										 convolutional layers for spatial feature extraction and LSTM 
+										 layers for capturing temporal dynamics.</p>
+										 The study used the EchoNet-Dynamic Dataset (Ouyang et al., 2020) ,
+										  a large publicly available collection of over 10,000 echocardiographic 
+										  videos in the four-chamber view. Each clip consists of up to 150 frames at
+										   50 frames per second, offering a diverse patient subset, with a significant
+										    proportion showing normal heart function. </p>
+											The final split included 5,616 normal clips for training, 1,000 normal clips
+											 for validation, and a test set comprising 703 normal and 703 abnormal clips.</p>
+
+
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_vae/abnormal echo.jpg" alt="" data-position="center center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Project Task</h3>
+											</header>
+											<p>The task was to visualize and detect anomalies in heart ultrasound video clips. 
+												As the access and availability of large labelled datasets with pathology are limited,  
+												The model uses one class Learning, trained on normal heart function data too detects 
+												deviations (using areas of high reconstruction error) as potential abnormalities.
+												Second point was to visualize the localized areas of the anomaly, on new clips, 
+												which should correspond to a pathology</p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_vae/model_architecture.jpg" alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Key Model Components</h3>
+											</header>
+											<p> Encoder: The encoder processes echocardiographic sequences, compressing them into a low-dimensional 
+												latent representation. It uses convolutional layers to capture spatial details (e.g., heart chamber
+												 boundaries and textures) and LSTM layers to model temporal variations (e.g., rhythmic heart motion). 
+												 The output of the encoder represents the mean and variance of a latent Gaussian distribution.<p> 
+													<p>  Sampling and Latent Space: The encoder employs the reparameterization trick to sample latent 
+												variables z from a learned Gaussian distribution. This approach ensures smooth latent space 
+												representations while enabling gradient-based optimization. The latent space is regularized to 
+												balance reconstruction quality and anomaly detection sensitivity (disentanglement) using a beta value .<p> 
+													<p>  Decoder: The decoder reconstructs echocardiographic sequences from the latent variables z.
+												 By using LSTM layers for temporal modeling and deconvolutional layers for spatial reconstruction,
+												  the decoder aims to produce high-fidelity outputs resembling the original input.
+												</p>
+											
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_vae/Untitled 7.jpg" alt="" data-position="25% 25%" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Model Sequence Generation and Reconstruction Error
+												</h3>
+											</header>
+											<p>The ConvLSTM VAE generates new echocardiographic sequences by sampling points 
+												from the learned latent space. These sampled points are passed through the decoder 
+												to produce synthetic sequences. By observing the quality and coherence of these 
+												generated sequences, the training quality can be evaluated. High-quality generations
+												 indicate that the latent space captures meaningful and smooth representations of 
+												 normal cardiac motion. </p>For pathology detection, the reconstruction error is computed as 
+												 the difference between the input sequence and its reconstruction. In normal echocardiographic clips,
+												  the model's reconstruction closely matches the input, 
+												  resulting in low reconstruction errors. However, for clips containing anomalies,
+												   the reconstruction error increases significantly because the model, 
+												   trained predominantly on normal data, struggles to represent 
+												   pathological patterns accurately. This reconstruction error serves as a 
+												   key indicator of potential pathology in new clips.
+											</p>
+											
+										</div>
+									</div>
+								</section>
+							</section>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+										<h2>Model Deplyoment</h2>
+									</header>
+									<p>Here is a simple deployment of the model. There are sample echo clips to 
+										test the visualisation of the model</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button next">try the model </a></li>
+									</ul>
+								</div>
+							</section>
+
+					</div>
+
+				
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/kristofsoler/Anomoly_detection_echo" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

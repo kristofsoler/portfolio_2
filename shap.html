@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<!--
+	
+-->
+<html>
+	<head>
+		<title>shap</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>Portfolio</strong> <span>Kristofer Soler</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button primary fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Understanding the Socio-Economic Dynamics 
+									of Political Affiliation in Norway Using SHAP:
+									 Insights from European Social Survey 10
+								</h1>
+							</header>
+							<div class="content">
+								<p><br />
+								</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h2>Project Overview</h2>
+									</header>
+									<p>This project investigates the socio-economic factors
+										 influencing political affiliation in Norway, using 
+										 data from the European Social Survey (ESS) 10. 
+										 The study employs machine learning models, with the
+										  XGBoost regressor achieving the best performance 
+										  in predicting political leaning on a 0–10 left-right scale.
+										   Using SHAP (SHapley Additive exPlanations), the analysis
+										    reveals key features driving political attitudes,
+											 including income inequality, immigration, and opinions on
+											  European Union unification. While the XGBoost model performed well,
+											   limitations such as moderate model accuracy and the inherent 
+											   complexity of SHAP interpretations are noted.
+											    This study offers valuable insights into political attitudes in Norway
+										   
+
+
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="spotlights">
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_social/key.jpg" alt="" data-position="center center" />
+										
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Methods</h3>
+											</header>
+											<p> 
+												The project used Python for data preprocessing, 
+												model training, and interpretability analysis. 
+												Missing data in the ESS dataset was handled using bootstrapping,
+												 which resampled available data to preserve dataset characteristics. To standardize the data, a StandardScaler 
+												 was applied, transforming categorical variables onto consistent scales
+												. Non-parametric models were 
+												  chosen due to the lack of Gaussian distribution in categorical data, 
+												  and the dataset was split into training and testing sets for model 
+												  evaluation. Several machine learning models, including Random Forest,
+												   K-Nearest Neighbors (KNN), and XGBoost, were trained and evaluated
+												    using performance metrics such as Mean Squared Error (MSE), 
+													Mean Absolute Error (MAE), and R². Hyperparameter tuning was
+													 performed using grid search with cross-validation, ensuring
+													  the optimal configuration of the models. The XGBoost regressor
+													   outperformed others, demonstrating lower MSE and higher R² values on both training and testing datasets.
+												<p> 
+												
+
+											   </p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_social/summary.jpg" alt="" data-position="top center" />
+										<img src="images_social/shapbar.jpg " alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Key Findings</h3>
+											</header>
+											<p>
+												The findings highlight that left-leaning voters prioritize reducing income inequality and
+												 supporting immigration, while right-leaning voters oppose income
+												  redistribution and prefer limited immigration. Interestingly,
+												   enthusiasm for European Union unification aligns more with right-wing voters, 
+												   contrary to broader trends. These insights provide a nuanced understanding
+												    of the socio-economic factors shaping political polarization in Norway.
+												<p>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_social/force2.jpg" alt="" data-position="25% 25%" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Right Leaning Voter</h3>
+											</header>
+											<p>Figure shows a force plot of a random participant with a 
+												predicted 7.07 on the output scale (RIGHT leaning). 
+												The features here in favour of pushing this participant right
+												is a disagreement that income differences should be minimised, 
+												not at all worried about climate.</p>
+										</div>
+									</div>
+								</section>
+								
+								<!-- Ensure force2 follows the same structure -->
+								<section>
+									<a href="generic.html" class="image">
+										<img src="images_social/force1.jpg" alt="" data-position="25% 25%" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Left Leaning Voter</h3>
+											</header>
+											<p>Figure shows a force plot of a random participant 
+												with a predicted 2.7 on the output scale (LEFT leaning).
+												The blue features show the magnitude at which it pushes 
+												the output lower (being more left on the scale) from the
+												base value (which is the output value without any features).
+												The size of the arrows indicates the extent it has on the output.
+												The features here in favour of pushing this participant left are 
+												income differences, climate change being human-made,
+												participated in demonstrations, and the country's culture is enriched
+												by immigrants.</p>
+										</div>
+									</div>
+								</section>
+
+					</div>
+
+				
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/kristofsoler/social_survey" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
