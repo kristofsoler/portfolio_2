@@ -205,21 +205,27 @@
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Lice counts
+												<h3> Results
 												</h3>
 											</header>
-											<p>The figure illustrates the fluctuations in
-												 lice counts across various regions of Norway over time,
-												  highlighting a notable spike in Vestland during 2012 and 2013.
-												   Throughout the observed period, distinct seasonal trends emerge,
-												    with lice counts exhibiting annual fluctuations. Despite these
-													 variations, the overall trend suggests relative stability, 
-													 indicating that while periodic increases and decreases occur,
-													  the long-term average remains consistent. The right figure
-													   provides further insight by depicting the outbreak count 
-													   over time for each region in Norway, offering a broader
-													    perspective on the temporal distribution of lice
-														 outbreaks across different areas
+											<p>Despite including exogenous predictors such as sea temperature and total lice counts, 
+											SARIMAX did not seem to improve forecast accuracy over SARIMA. 
+											The forecasts and errors from SARIMAX were nearly identical to those from SARIMA,
+											indicating that the exogenous variables did not contribute meaningfully to the model's predictive power.
+
+											</p>
+
+											<a href="generic.html" class="image">
+											<img src="images_timeseries/model_comp.png" alt="" data-position="25% 25%" />
+											</a>
+											<p>
+											This suggests that the seasonal structure alone captured by the SARIMA model is the
+											dominant signal in the data. Also to address potential multicollinearity between exogenous
+											variables, Principal Component Analysis (PCA) was applied as a dimensionality reduction step.
+											However, incorporating PCA-transformed features into SARIMAX had no measurable impact on model
+											performance, further reinforcing that external variables — correlated or otherwise — did not 
+											improve forecasts in this context.
+												
 											</p>
 											
 										</div>
