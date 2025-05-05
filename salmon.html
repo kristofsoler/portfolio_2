@@ -149,18 +149,18 @@
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Key Model Components</h3>
+												<h3>Methods</h3>
 											</header>
-											<p> This study evaluates the effectiveness of the SARIMAX model in integrating exogenous variables
-												 for disease prediction, assessing its ability to capture temporal dependencies.
-												  Additionally, it explores whether Temporal Convolutional Networks (TCNs) 
-												  offer a superior alternative, given their strength in handling non-linear
-												   dependencies and long-term patterns. To determine the best approach,
-												    both models are benchmarked using key performance metrics such as 
-													RMSE and R-squared, providing insights into their predictive accuracy,
-													 strengths, and limitations.
+											<p> The investigation analyzes each county separately to align with the disease management priorities	
+												of the kommune, focusing on localized outbreak patterns. The following results are from Trøndelag. 
+												Seasonal decomposition plots revealed both clear seasonal patterns and long-term trends, 
+												justifying the use of models that explicitly capture seasonality, such as SARIMA and SARIMAX.
+												To develop the SARIMAX models, optimal hyperparameters (p,d,q)(p, d, q)(p,d,q) and seasonal terms 
+												(P,D,Q,s)(P, D, Q, s)(P,D,Q,s) were determined via grid search,. Separate models were fitted with 
+												and without exogenous variables to assess their contribution.
+
 												</p>
-											
+											<img src="images_timeseries/decomp.png" alt="Seasonal Decomposition Plot" style="max-width:100%; height:auto; margin-top: 20px;"/>
 										</div>
 									</div>
 								</section>
