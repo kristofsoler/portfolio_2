@@ -160,7 +160,44 @@
 												and without exogenous variables to assess their contribution.
 
 												</p>
-											<img src="images_timeseries/decomp.png" alt="Seasonal Decomposition Plot" style="max-width:100%; height:auto; margin-top: 20px;"/>
+												<img src="images_timeseries/decomp.png" alt="Seasonal Decomposition Plot" style="max-width:100%; height:auto; margin-top: 20px;"/>
+												<p> 
+												The exogenous variables — sea temperature and total lice counts — were first normalized using MinMaxScaler to bring all
+												features to a 0–1 range. To address potential multicollinearity between the exogenous predictors, 
+												Principal Component Analysis (PCA) was applied. The first principal component explained over 90% of the variance, 
+												and was used as an alternative exogenous input in one variant of the SARIMAX model.
+
+												</p>	
+
+												<p>
+												A Temporal Convolutional Network (TCN) was also trained to forecast normalized disease outbreaks using sea 
+													temperature and lice count as exogenous features. The features were scaled using MinMaxScaler, and
+													input sequences were generated with a lookback window of 150 time steps. The model architecture included a
+													TCN layer with 64 filters, kernel size of 5, and dilations of [2, 4, 8], followed by a dense output layer. 
+													The data was split chronologically (no shuffling) into training and test sets, and the model was trained for 100
+													epochs using the Adam optimizer with a learning rate of 0.01.
+	
+												</p>
+											
+												<p>
+												To optimize the TCN model, we performed a grid search over combinations of key hyperparameters, 
+													including the number of filters, kernel sizes, dilation sets, learning rates, and batch sizes.
+													For each configuration, a TCN model was trained for 30 epochs using a validation split 
+													from the training set (without shuffling to preserve time order). After training, both validation
+													and test mean squared errors (MSE) were recorded to evaluate performance.
+
+												</p>
+
+												<img src="images_timeseries/MSE.png" alt="Seasonal Decomposition Plot" style="max-width:100%; height:auto; margin-top: 20px;"/>
+													<p>
+														Forecasting performance was then evaluated across:
+													</p>
+												<ul>
+													<li>SARIMA (no exogenous variables)</li>
+													<li>SARIMAX (with exogenous variables)</li>
+													<li>SARIMAX with PCA-reduced and exogenous variables</li>
+													<li>TCN with exogenous variables </li>
+												</ul>
 										</div>
 									</div>
 								</section>
