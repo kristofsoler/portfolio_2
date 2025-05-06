@@ -179,23 +179,29 @@
 						                        <h3>Results</h3>
 						                    </header>
 						                    <p>
-						                        Despite including exogenous predictors such as sea temperature and total lice counts, SARIMAX did not improve forecast accuracy over SARIMA.
-						                        Forecasts and errors were nearly identical, indicating the exogenous variables did not add meaningful predictive power.
+						                        Despite including exogenous predictors such as sea temperature and total lice counts, 
+									    SARIMAX with full exogenous inputs significantly outperformed both SARIMA and ARIMA,
+									    achieving the lowest test error. This indicates that the exogenous variables 
+									    contributed meaningful predictive power when used directly.
 						                    </p>
 						
 						                    <img src="images_timeseries/model_comp.png" alt="Model Comparison" style="max-width:100%; height:auto; margin: 20px auto; display: block;" />
 						
 						                    <p>
-						                        This suggests that the seasonal structure alone captured by the SARIMA model is the dominant signal in the data.
-						                        PCA-transformed features added to SARIMAX also showed no measurable performance impact.
+						                        PCA-transformed exogenous features in SARIMAX resulted in worse performance, suggesting that
+									    dimensionality reduction may have discarded important information.The SARIMA model, which relies 
+									    only on seasonal patterns without exogenous inputs, performed worse than SARIMAX, but better than the PCA-based SARIMAX variant.
+									    This shows that while seasonality remains an important driver, incorporating raw external variables enhanced forecasts when properly handled.
+									    The ARIMA model, lacking both seasonality and exogenous inputs, performed better than SARIMA with 
+									    PCA but worse than SARIMAX with full inputs, indicating the value of seasonal and exogenous structures.
 						                    </p>
 						
 						                    <img src="images_timeseries/TCN.png" alt="TCN Output" style="max-width:100%; height:auto; margin: 20px auto; display: block;" />
 						                    <img src="images_timeseries/learning_curve.png" alt="TCN Learning Curve" style="max-width:100%; height:auto; margin: 20px auto; display: block;" />
 						
 						                    <p>
-						                        The TCN model outperformed all others in terms of mean squared error (MSE), indicating better capture of temporal patterns using exogenous variables.
-						                        However, imperfections in predictions suggest other underlying trends are still unexplained by temperature and lice counts alone.
+						                        The TCN model outperformed most of the  others in terms of mean squared error (MSE), indicating a good capture of temporal patterns using exogenous variables.
+						                        However, the process of optimising requires more work as there are more hyperparameters to consider and the SARIMAX with ex variables did outperform  the TCN in this case. 
 						                    </p>
 						                </div>
 						            </div>
